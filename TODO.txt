@@ -1,0 +1,73 @@
+
+o API routes to be front-ended:
+
+	o Create appointments page/form 
+
+	o Sign In - Current
+
+	o Sign UP
+
+	o Get Appointments (call it my appointments):
+
+		- The drop down that specifies what dates
+		you want the appointments to display on.
+
+
+o Implement notifications - 
+
+	o Create DB table called notifications,
+	o have a receiver_email foreg. key,
+	o give it a details column
+
+o install momentJS or maybe an even lighter
+library to convert from UTC time.
+
+o Have it so that if the email is already in the DB, 
+sign in with firebase and redirect to the user page.
+
+Here's how:
+
+	- if firebase is successful with it's auth., 
+	then send a message to the backend to hit up
+	DB to see if the email is there, if it is, make
+	the jwt,
+
+	- have an {..., firebase: true/false} key inside
+	the json object we send to the backend for the 
+	create and sign in methods. 
+
+	
+o Writing Foreing Keys - Here's the syntax for the FK:
+
+	alter table appointments add foreign key (inner_column) 
+	references parent_table(parent_column) ON DELETE CASCADE;
+
+inner_column refers to the column inside the child table (the table
+with the foreign key), parent_table and column are self explainatory.
+The inner_column must exist or you'll get a "doesn't exist" error.
+
+The primary key that's referenced in the command MUST exist in the 
+parent table or you'll get a "violates foreign key constraint".
+
+So parent_column must exist AND BE the primary key of that table, 
+and inner column must exsit before the above syntax is written.
+
+Also you're allowed to leave foreign keys empty, but primary keys
+cannot be null.
+
+
+o You can use the DATE(column_name) function in SQL to convert a datetime/timestamp
+into a regular date if your don't want the spefic time.
+
+	select * from appointments where DATE(time) = '2021-05-09';
+
+This returns all the table whose timestamp extraced date is May 9th 2021.
+	
+
+select * from appointments where DATE(time) = current_date;
+
+
+SELECT timestamp
+FROM randomTable
+ORDER BY timestamp ASC;
+
