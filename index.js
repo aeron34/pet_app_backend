@@ -9,10 +9,10 @@ const secret = 'shhh my guy';
 const knx = require('knex')({
   client: 'pg',
   connection: {
-    host : 'queenie.db.elephantsql.com',
-    user : 'knnqpjlo',
-    password : 'gFwUYQT8FxjlOH-3ZDr8h8kgzS3S5wcJ',
-    database : 'knnqpjlo'
+    host : env.DB_HOST,
+    user : env.DB_USER,
+    password : env.DB_PASSWORD,
+    database : env.DB'
   },
 });
 
